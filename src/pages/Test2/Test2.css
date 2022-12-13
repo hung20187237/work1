@@ -1,0 +1,45 @@
+
+.maintest2{
+    max-height: 1200px !important;
+    margin: 20vh auto;
+    background-color: rgb(255, 255, 255);
+    max-width: 50vw !important;
+    box-shadow: 10px 10px 5px 12px lightblue;
+    padding-top: 12px;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    justify-content: center;
+    position: relative;
+}
+.listtest2{
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+    padding-bottom: 0 !important;
+    overflow-y: scroll;
+}
+
+.listitem{
+    border-bottom-width: 1px ; 
+    border-bottom-style: solid;
+    border-bottom-color: rgb(198, 198, 198);
+}
+.stackbottom{
+    background-color: rgb(222, 255, 229);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+}
+.boxicon{
+    margin: 8px;
+    display: flex;
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: rgb(198, 198, 198);
+}
+.css-tzssek-MuiSvgIcon-root{
+    height: 100% !important;
+}
+.css-9eg9l8-MuiTypography-root{
+    line-height: 60px !important;
+}

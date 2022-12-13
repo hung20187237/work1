@@ -1,0 +1,6 @@
+.home{
+    display: flex;
+    justify-content: center;
+    margin: 30vh auto;
+    color: #545454;
+}

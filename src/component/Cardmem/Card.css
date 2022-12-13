@@ -1,0 +1,19 @@
+.cardaction{
+    margin: auto;
+    justify-content: center;
+}
+.cardmedia{
+    display: flex !important;
+    justify-content: center;
+    margin-top: 4vh;
+}
+.cardmem{
+    display: block;
+    box-sizing: border-box;
+    margin: 2vh 0;
+    padding: 0 8px;
+    
+}
+.sh{
+    background-size: cover
+}
