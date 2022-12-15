@@ -11,7 +11,7 @@ import MenuList from "@mui/material/MenuList";
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
 
-const options = ["test1", "test2", "test3", "test4"];
+const options = ["test1", "test2", "test3", "test4","test5"];
 
 export default function Home() {
   let navigate = useNavigate();

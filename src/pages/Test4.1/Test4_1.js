@@ -16,7 +16,7 @@ export default function Test4_1() {
           <H1>By Signing Up, you can avail full features of our services.</H1>
           <H1>Get an account !!!</H1>
         </BoxText>
-        <BoxText zindx = '2'><img src={logo}/></BoxText>
+        <BoxText zindx = '2'></BoxText>
       </PropsBox>
       <PropsBox background="white" flex="6" radius="0" right="15px">
         <Formlg/>

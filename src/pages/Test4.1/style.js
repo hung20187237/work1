@@ -57,7 +57,6 @@ export const PropsBox = styled.div(props => ({
     borderTopRightRadius: props.right,
     borderBottomRightRadius: props.right,
     position: 'relative',
-
 }));
 
 

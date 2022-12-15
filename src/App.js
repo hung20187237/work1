@@ -8,6 +8,7 @@ import Test1 from "./pages/Test1/Test1";
 import Test2 from "./pages/Test2/Test2";
 import Test3 from "./pages/Test3/Test3";
 import Test4_1 from "./pages/Test4.1/Test4_1";
+import Test4_2 from "./pages/Test4_2/Test4_2";
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/test2" element={<Test2 />} />
         <Route path="/test3" element={<Test3/>}/>
         <Route path="/test4" element={<Test4_1/>}/>
+        <Route path="/test5" element={<Test4_2/>}/>
       </Routes>
 
     </Router>
