@@ -14,6 +14,28 @@ export const SiderStyled = styled(Sider)`
   }
 `;
 
+export const ContentStyled = styled(Content)`
+  &.ant-layout-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      flex: 1 1 auto;
+      max-width: calc(100% - 230px - 1px);
+  }
+`;
+
+export const Footerstyled = styled(Footer)`
+  &.ant-layout-footer{
+    padding: 14px 32px;
+    color: #545454;
+    font-size: 14px;
+    background: #fffffe;
+    border-top: solid 1px #e8e8e8;
+  }
+`;
+
 export const Sidercus = styled(Sider)`
   &.sidercontent {
     background-color: #ffffff;
@@ -90,7 +112,6 @@ export const Avatar = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  line-height: 40px;
   border-radius: 50%;
 `;
 export const SpanName = styled.span`
@@ -112,6 +133,22 @@ export const MenuIcon = styled(Menu)`
     font-size: 20px !important;
   }
 `;
+
+export const BoxIcon = styled.span`
+  width: 40px;
+  height: 40px;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  :hover{
+    background-color: rgba(0,0,0,0.1);
+  }
+`;
+
 export const BoxScroll = styled.div`
   position: relative;
   overflow: hidden;
@@ -166,8 +203,23 @@ export const MenuItem = styled(Menu)`
 export const Flex = styled.div`
   display: flex;
   justify-content: space-between;
+  flex-direction: ${(props) => props.direction};
+  flex-wrap: nowrap;
   height: ${(props) => props.heg};
   width: ${(props) => props.wid};
+
+  &.marginauto{
+    align-items: center;
+    margin-left: auto;
+  }
+  &.moduleflex{
+    padding: 8px 28px;
+    min-height: 65px;
+    flex-wrap: wrap;
+    align-items: center;
+    border-bottom: solid 1px #e8e8e8;
+}
+  }
 `;
 export const Box = styled.div`
   &.boxheader {
@@ -221,6 +273,45 @@ export const Box = styled.div`
     flex-wrap: wrap;
     padding: 24px;
   }
+  &.flex {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  &.headercontent {
+    padding: 10px 26px;
+    min-height: 79px;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #ffffff;
+    border-bottom: solid 1px #e8e8e8;
+  }
+  &.modulebox{
+    background-color: #ffffff;
+    flex-direction: column;
+    flex: 1 1 auto;
+}
+  }
+  &.searchbarcontent {
+    width: 350px;
+    position: relative;
+    display: block !important;
+
+    @media (max-width: 1199px){
+      width: 150px;
+    }
+
+    @media (max-width: 576px){
+      display: none !important;
+    }
+  }
+  &.menumedia {
+    display: flex !important;
+
+    @media (min-width: 992px){
+      display: none !important;
+    }
+  }
+
 `;
 export const Button = styled.button`
   &.buttonadd {
@@ -264,11 +355,23 @@ export const List = styled.ul`
     flex-wrap: nowrap;
     justify-content: center;
   }
+  &.listlanguage{
+    list-style: none;
+    margin: 0 16px;
+    padding-left: 0;
+  }
 `;
 export const Li = styled.li`
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
+  &.languageitem{
+    border-bottom: solid 1px #e8e8e8;
+    padding: 5px 0;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
 `;
 
 export const Text = styled.span`

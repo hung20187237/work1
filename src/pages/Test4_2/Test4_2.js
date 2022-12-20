@@ -1,15 +1,19 @@
 import React from "react";
 
+import { useState, useEffect, useRef } from "react";
 import Logo from "../../asset/img/logo.png";
 import { Layout, Input, theme } from "antd";
 import {
   Avatar,
   Box,
+  BoxIcon,
   BoxMenu,
   BoxScroll,
   Button,
   CardUser,
+  ContentStyled,
   Flex,
+  Footerstyled,
   HeaderStyled,
   Li,
   List,
@@ -37,7 +41,9 @@ import {
   MessageOutlined,
   ShoppingCartOutlined,
   PlusOutlined,
-  StarTwoTone
+  StarTwoTone,
+  MenuUnfoldOutlined,
+  StarOutlined,
 } from "@ant-design/icons";
 import { BsCurrencyBitcoin, BsListUl } from "react-icons/bs";
 import { TiFlowMerge, TiContacts } from "react-icons/ti";
@@ -47,9 +53,10 @@ import { GoCreditCard } from "react-icons/go";
 import { TbIcons, TbRefreshDot } from "react-icons/tb";
 import { CgProfile } from "react-icons/cg";
 import { IoPersonCircle } from "react-icons/io5";
-import {GiUsaFlag} from 'react-icons/gi'
+import { GiUsaFlag } from "react-icons/gi";
+import Checkboxcontent from "../../component/Checkbox/Checkbox";
+import Language from "../../component/Language/Language";
 
-const { Content, Footer } = Layout;
 
 function getItem(label, key, icon, children, type) {
   return {
@@ -69,7 +76,7 @@ const items = [
       getItem("Dashboard", "sub1", <DashboardOutlined />, [
         getItem("Crypto", "1", <BsCurrencyBitcoin />),
         getItem("Crm", "2", <TiFlowMerge />),
-        getItem("Listing", "2", <UnorderedListOutlined />),
+        getItem("Listing", "3", <UnorderedListOutlined />),
       ]),
       getItem("Widgets", "sub2", <MdWidgets />),
       getItem("Metrics", "sub3", <IoAppsSharp />),
@@ -110,12 +117,19 @@ const Iconitems = [BellOutlined, SearchOutlined, CommentOutlined].map(
   })
 );
 
+
+
 const Test4_2 = () => {
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
+
+  const [show, setShow] = useState(false)
+
+
+  const handleShow = () => {
+    setShow(!show)
+  }
+
   return (
-    <Layout hasSider style={{width: '100%', height: '100vh'}}>
+    <Layout hasSider style={{ width: "100%", height: "100vh" }}>
       <SiderStyled
         style={{
           overflow: "auto",
@@ -147,31 +161,44 @@ const Test4_2 = () => {
           <ScrollBar />
         </BoxScroll>
       </SiderStyled>
-      <Layout
-        className="site-layout"
-      >
+      <Layout className="site-layout">
         <HeaderStyled>
-          <Flex wid = '100%'>
-            <PropsBox wid = '350px' display = 'block'>
-              <PropsBox wid = '100%' heg = '100%' display = 'flex'>
-                <SearchOutlined style={{height: '46px', alignItems: 'center', display: 'flex'}} />
-                <Input placeholder="Search in app..." bordered={false} style={{height: '46px',padding: '10px 18px 10px 18px'}}/>
+          {show?<Language/>:null}
+          <Flex wid="100%">
+            <PropsBox wid="350px" display="block">
+              <PropsBox wid="100%" heg="100%" display="flex">
+                <SearchOutlined
+                  style={{
+                    height: "46px",
+                    alignItems: "center",
+                    display: "flex",
+                  }}
+                />
+                <Input
+                  placeholder="Search in app..."
+                  bordered={false}
+                  style={{ height: "46px", padding: "10px 18px 10px 18px" }}
+                />
               </PropsBox>
             </PropsBox>
-            <Flex wid = '100px' style={{alignItems: 'center',}}>
-                <GiUsaFlag style={{width: '24px', height: ' 24px'}}/>
-                <Text>English</Text>
-                <DownOutlined/>
+            <Flex wid="100px" style={{ alignItems: "center" }} onClick={handleShow}>
+              <GiUsaFlag style={{ width: "24px", height: " 24px" }} />
+              <Text>English</Text>
+              <DownOutlined />
             </Flex>
           </Flex>
         </HeaderStyled>
         <Layout>
-          <Sidercus
-            className="sidercontent"
-          >
+          <Sidercus className="sidercontent">
             <Box className="boxheader">
               <Box className="boxcard">
-                <TiContacts style={{fontSize: '40px', lineHeight: '28px', marginRight: '1rem'}}/>
+                <TiContacts
+                  style={{
+                    fontSize: "40px",
+                    lineHeight: "28px",
+                    marginRight: "1rem",
+                  }}
+                />
                 <Text className="textcard">Contacts</Text>
               </Box>
             </Box>
@@ -180,27 +207,33 @@ const Test4_2 = () => {
                 <Box className="contentscroll">
                   <Box className="boxadd">
                     <Button className="buttonadd">
-                      <PlusOutlined style={{marginRight: '0.5rem'}}/>
+                      <PlusOutlined style={{ marginRight: "0.5rem" }} />
                       <Text className="buttontext">Add New Contact</Text>
                     </Button>
                   </Box>
                   <Box className="boxnav">
                     <List className="listsider">
                       <Li>
-                      <Text className="textli">
-                        <BsListUl className="blue" style={{marginRight: '16px', fontSize: '16px'}}/>
-                        <Text className="blue">All contacts</Text>
-                      </Text>
-                      </Li>
-                      <Li>
-                      <Text className="textli">
-                        <TbRefreshDot style={{marginRight: '16px', fontSize: '16px'}}/>
-                        <Text>Frequently contacted</Text>
-                      </Text>
+                        <Text className="textli blue">
+                          <BsListUl
+                            style={{ marginRight: "16px", fontSize: "16px" }}
+                          />
+                          <Text className="blue">All contacts</Text>
+                        </Text>
                       </Li>
                       <Li>
                         <Text className="textli">
-                          <StarTwoTone style={{marginRight: '16px', fontSize: '16px'}}/>
+                          <TbRefreshDot
+                            style={{ marginRight: "16px", fontSize: "16px" }}
+                          />
+                          <Text>Frequently contacted</Text>
+                        </Text>
+                      </Li>
+                      <Li>
+                        <Text className="textli">
+                          <StarOutlined
+                            style={{ marginRight: "16px", fontSize: "16px" }}
+                          />
                           <Text>Starred contacts</Text>
                         </Text>
                       </Li>
@@ -210,43 +243,60 @@ const Test4_2 = () => {
               </Box>
             </Box>
           </Sidercus>
-          <Content
-            style={{
-              overflow: "initial",
-            }}
-          >
-            <div
-              style={{
-                padding: 24,
-                textAlign: "center",
-                background: colorBgContainer,
-              }}
-            >
-              <p>long content</p>
-              {
-                Array.from(
-                  {
-                    length: 20,
-                  },
-                  (_, index) => (
-                    <React.Fragment key={index}>
-                      {index % 20 === 0 && index ? "more" : "..."}
-                      <br />
-                    </React.Fragment>
-                  )
-                )
-              }
-            </div>
-          </Content>
+          <ContentStyled>
+            <Box className="flex headercontent">
+              <Flex direction="row">
+                <Box className="menumedia">
+                  <MenuUnfoldOutlined
+                    style={{
+                      fontSize: "20px",
+                      alignItems: "center",
+                      cursor: "pointer",
+                      display: "flex",
+                      width: '40px',
+                      height: '40px',
+                      borderRadius: '2px'
+                    }}
+                  />
+                </Box>
+                <Box className="searchbarcontent">
+                  <PropsBox wid="100%" heg="100%" display="flex">
+                    <SearchOutlined
+                      style={{
+                        height: "46px",
+                        alignItems: "center",
+                        display: "flex",
+                      }}
+                    />
+                    <Input
+                      placeholder="Search cont..."
+                      bordered={false}
+                      style={{ height: "46px", padding: "10px 18px 10px 18px" }}
+                    />
+                  </PropsBox>
+                </Box>
+                <Flex direction="row" className="marginauto">
+                  <BoxIcon>
+                    <IoAppsSharp className="iconapp" style={{ fontSize: "24px"}} />
+                  </BoxIcon>
+                  <BoxIcon>
+                    <BellOutlined
+                      style={{ fontSize: "22px" }}
+                    />
+                  </BoxIcon>
+                </Flex>
+              </Flex>
+            </Box>
+
+            <Box className="flex modulebox">
+              <Checkboxcontent/>
+            </Box>
+          </ContentStyled>
         </Layout>
 
-        <Footer
-          style={{
-            textAlign: "center",
-          }}
-        >
-          Ant Design ©2018 Created by Ant UED
-        </Footer>
+        <Footerstyled
+        >Copyright Company Name © 201
+        </Footerstyled>
       </Layout>
     </Layout>
   );
