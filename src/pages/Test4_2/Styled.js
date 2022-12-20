@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import { Layout, Menu, Slider, theme } from "antd";
+import { Drawer, Input, Layout, Menu, Modal} from "antd";
 
 const { Header, Content, Footer, Sider } = Layout;
+
 
 export const SiderStyled = styled(Sider)`
   &.ant-layout-sider {
@@ -12,7 +13,85 @@ export const SiderStyled = styled(Sider)`
     background: #003366 !important;
     overflow: hidden !important;
   }
+  &.reponsive {
+    @media (max-width: 1266px){
+      width: 240px !important;
+    }
+
+    @media (max-width: 991px){
+      width: 0 !important;
+      min-width: 0 !important;
+    }
+
+
+  }
 `;
+
+export const DrawerStyled = styled(Drawer)`
+  &.ant-drawer-content {
+    position: relative;
+    z-index: 1;
+    background-clip: padding-box;
+    border: 0;
+  }
+  .ant-drawer-body {
+    flex-grow: 1;
+    padding: 0;
+  }
+`;
+
+export const ModalStyled = styled(Modal)`
+  &.ant-modal {
+    margin: 0 auto;
+    transform-origin: 29.2px 87px;
+  }
+  .ant-modal-content {
+    position: relative;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 0;
+    border-radius: 6px;
+    box-shadow: 0 3px 6px -4px rgb(0 0 0 / 12%), 0 6px 16px 0 rgb(0 0 0 / 8%), 0 9px 28px 8px rgb(0 0 0 / 5%);
+    pointer-events: auto;
+    padding: 0;
+  }
+  .ant-modal-header {
+    padding: 16px 24px;
+    color: #545454;
+    background: #fff;
+    border-bottom: 1px solid #e8e8e8;
+    border-radius: 6px 6px 0 0;
+  }
+  .ant-modal-title {
+    margin: 0;
+    color: #535353;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+    word-wrap: break-word;
+  }
+  .ant-modal-body {
+    padding: 24px;
+    font-size: 14px;
+    line-height: 1.3;
+    word-wrap: break-word;
+  }
+  .ant-modal-footer {
+    padding: 10px 16px;
+    text-align: right;
+    background: transparent;
+    border-top: 1px solid #e8e8e8;
+    border-radius: 0 0 6px 6px;
+  }
+
+`;
+
+export const DrawerStyled2 = styled(DrawerStyled)`
+  &.ant-drawer-body {
+    flex-grow: 1;
+    padding: 0;
+  }
+`
 
 export const ContentStyled = styled(Content)`
   &.ant-layout-content {
@@ -23,6 +102,11 @@ export const ContentStyled = styled(Content)`
       flex-wrap: nowrap;
       flex: 1 1 auto;
       max-width: calc(100% - 230px - 1px);
+  }
+  &.reponsive {
+    @media (max-width: 991px) {
+      max-width: 100%;
+    }
   }
 `;
 
@@ -48,6 +132,20 @@ export const Sidercus = styled(Sider)`
     flex: 0 1 230px !important;
     min-width: 230px !important;
   }
+  &.siderdrawer{
+    min-width: 260px !important;
+    background-color: #ffffff;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+  &.reponsive {
+    @media (max-width: 992px){
+      display: none !important;
+    }
+  }
 `;
 
 export const HeaderStyled = styled(Header)`
@@ -65,6 +163,11 @@ export const HeaderStyled = styled(Header)`
     z-index: 10;
     color: #262626;
     background: #fefefe;
+  }
+  &.reponsive {
+    @media (max-width: 991px){
+      padding: 0 15px;
+    }
   }
 `;
 
@@ -104,6 +207,12 @@ export const SpanAvatar = styled.span`
     text-align: center;
     vertical-align: middle;
     border-radius: 50%;
+
+  &.reponsive{
+    @media (max-width: 576px) {
+      display: none !important;
+    }
+  }
     
 }
 `;
@@ -119,6 +228,7 @@ export const SpanName = styled.span`
   font-weight: 400;
   font-size: 14px;
 `;
+
 
 
 export const MenuIcon = styled(Menu)`
@@ -252,6 +362,12 @@ export const Box = styled.div`
     width: 100%;
     height: calc(100vh - 201px) !important;
   }
+  &.contentrepon {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: calc(100vh - 79px) !important;
+  }
   &.contentscroll {
     position: absolute;
     inset: 0px;
@@ -261,15 +377,8 @@ export const Box = styled.div`
     overflow-y: scroll !important;
   }
   &.boxadd {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: -ms-flex;
     display: flex;
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
     flex-direction: row;
-    -webkit-flex-wrap: wrap;
-    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     padding: 24px;
   }
@@ -289,7 +398,23 @@ export const Box = styled.div`
     background-color: #ffffff;
     flex-direction: column;
     flex: 1 1 auto;
-}
+
+  }
+  &.modalbox{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  &.modalboxavatar{
+    margin-left: 16px;
+    order: 2;
+  }
+  &.modalforminput{
+    flex: 1;
+    order: 1;
+  }
+  &.modalboxinput{
+    margin-bottom: 10px;
   }
   &.searchbarcontent {
     width: 350px;
@@ -311,6 +436,7 @@ export const Box = styled.div`
       display: none !important;
     }
   }
+
 
 `;
 export const Button = styled.button`
@@ -373,6 +499,29 @@ export const Li = styled.li`
     align-items: flex-start;
   }
 `;
+
+export const InputStyled = styled(Input)`
+  &.ant-input {
+    box-sizing: border-box;
+    margin: 0;
+    font-variant: tabular-nums;
+    list-style: none;
+    font-feature-settings: 'tnum';
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    min-width: 0;
+    padding: 7.9px 11px;
+    color: #545454;
+    font-size: 14px;
+    line-height: 1.3;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #d9d9d9;
+    border-radius: 6px;
+    transition: all .3s;
+  }
+`
 
 export const Text = styled.span`
   font-weight: 400;

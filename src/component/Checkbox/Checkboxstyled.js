@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Layout, Col, Row, Checkbox} from "antd";
+import { Layout, Col, Row, Checkbox, Avatar} from "antd";
 import { MoreOutlined, StarOutlined } from "@ant-design/icons";
 import {AiFillStar} from 'react-icons/ai'
 
@@ -65,6 +65,12 @@ export const Flex = styled.div`
         align-items: center;
         border-bottom: solid 1px #e8e8e8;
     }
+    &.reponsive {
+        @media screen and (max-width: 575px) {
+            padding-left: 0;
+            max-width: calc(100% - 50px);
+        }
+    }
 `;
 
 export const Box = styled.div`
@@ -120,11 +126,12 @@ export const Box = styled.div`
 `;
 
 export const Text = styled.span`
-    width: 100%;
+    width: ${(props) => props.wid};
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     font-size: ${(props) => props.fs};
+    display: ${(props) => props.dp};
     &.useremail{
         word-break: break-all;
         margin-right: 0.5rem !important;
@@ -151,6 +158,9 @@ export const Checkboxstyled = styled(Checkbox)`
         align-items: center;
         cursor: pointer;
     }
+    &.marginright{
+        margin-right: 10px;
+    }
     &.ant-checkbox-wrapper:hover {
         background-color: rgba(0,0,0,0.1);
     }
@@ -175,7 +185,22 @@ export const StarIcon = styled.div`
     &.gray {
         color: yellow;
     }
+    &.reponsive {
+        @media (max-width: 576px) {
+            display: none !important;
+        }
+    }
 `;
+export const AvatarStyled = styled(Avatar)`
+    &.ant-avatar {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        line-height: 40px;
+        border-radius: 50%;
+        background: transparent;
+    }
+`
 
 export const MoreIcon = styled(MoreOutlined)`
     &.anticon {

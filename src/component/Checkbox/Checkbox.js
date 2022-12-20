@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { SpanAvatar,  Avatar } from "../../pages/Test4_2/Styled";
+import { SpanAvatar,  Avatar, BoxIcon } from "../../pages/Test4_2/Styled";
 import { CheckboxGroup, Checkboxstyled, Colcheckbox, RowCheckbox, StarIcon, Flex, Box, Text, Dividerstyled, MoreIcon, } from "./Checkboxstyled";
 import { message } from "antd";
 import {  AiFillStar } from "react-icons/ai";
+import {RiDeleteBin6Line} from 'react-icons/ri'
 
 
 
@@ -71,10 +72,11 @@ const plainOptions = [
 ];
 
 const Checkboxcontent = () => {
-    const [checkedStar, setCheckedStar] = useState([]);
+  const [checkedStar, setCheckedStar] = useState([]);
   const [checkedList, setCheckedList] = useState();
   const [indeterminate, setIndeterminate] = useState();
   const [checkAll, setCheckAll] = useState(false);
+  const [show, setShow] = useState(false);
   const [messageApi, contextHolder] = message.useMessage();
 
 
@@ -97,6 +99,7 @@ const Checkboxcontent = () => {
     setCheckedList(list);
     setIndeterminate(!!list.length && list.length < plainOptions.length);
     setCheckAll(list.length === plainOptions.length);
+    setShow(list.length > 0)
   };
   console.log(checkedList)
   
@@ -109,6 +112,7 @@ const Checkboxcontent = () => {
       }
     setIndeterminate(false);
     setCheckAll(e.target.checked);
+    setShow(e.target.checked)
   };
   
   return (
@@ -119,8 +123,12 @@ const Checkboxcontent = () => {
             onChange={onCheckAllChange}
             checked={checkAll}
             style={{borderRadius: '2px'}}
+            className= 'marginright'
         >
         </Checkboxstyled>
+        {show?<BoxIcon>
+          <RiDeleteBin6Line/>
+        </BoxIcon>:null}
       </Flex>
       <CheckboxGroup value={checkedList} onChange={onChange}>
         <Colcheckbox>
@@ -129,29 +137,29 @@ const Checkboxcontent = () => {
                 <Flex className="direction" wrap = 'wrap' direction = 'row' style={{paddingRight: '10px'}}>
                     <Checkboxstyled value={index} ></Checkboxstyled>
                     {checkedStar.indexOf(index) !== -1 ?
-                        <StarIcon className="gray anticon" onClick={handleToggle(index)}>
+                        <StarIcon className="gray anticon reponsive" onClick={handleToggle(index)}>
                             <AiFillStar/>
                         </StarIcon>
-                        :<StarIcon className="anticon" onClick={handleToggle(index)}>
+                        :<StarIcon className="anticon reponsive" onClick={handleToggle(index)}>
                             <AiFillStar/>
                         </StarIcon>
                     }    
                         
                     {contextHolder}
-                    <SpanAvatar style={{marginLeft: '0.5rem'}}>
+                    <SpanAvatar className="reponsive" style={{marginLeft: '0.5rem'}}>
                         <Avatar src="https://wieldy.g-axon.work/assets/images/avatar/domnic-harris.png"/>
                     </SpanAvatar>
                 </Flex>
-                <Flex className="direction cardmember" wrap = 'wrap' direction = 'row'>
+                <Flex className="direction cardmember reponsive" wrap = 'wrap' direction = 'row'>
                     <Box flex = '1'>
                         <Box mgb = '0.25rem'>
-                            <Text fs = '15px'>{options.name}</Text>
+                            <Text fs = '15px' wid = '100%'>{options.name}</Text>
                             <Dividerstyled>&nbsp;</Dividerstyled>
-                            <Text>{options.job}</Text>
+                            <Text wid = '100%'>{options.job}</Text>
                         </Box>
                         <Box className="colorgray">
-                            <Text className="useremail">{options.email}@example.com</Text>
-                            <Text>{options.phone}</Text>
+                            <Text className="useremail" dp = 'inline-block'>{options.email}@example.com</Text>
+                            <Text dp = 'inline-block'>{options.phone}</Text>
                         </Box>
                     </Box>
                     <MoreIcon/>
